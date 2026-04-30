@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import blueBg from "../assets/blue-bg.png";
 import faviconIcon from "../assets/cards2/favicon.ico";
 
@@ -10,7 +11,7 @@ const cards = [
         desc: "Integrate digital assets into your treasury strategy",
     },
     {
-        icon: null,
+        icon: faviconIcon,
         isImg: false,
         svgIcon: (
             <svg viewBox="0 0 40 40" fill="white" className="w-10 h-10">
@@ -21,7 +22,7 @@ const cards = [
         desc: "Execute large orders with minimal market impact and competitive spreads",
     },
     {
-        icon: null,
+       icon: faviconIcon,
         isImg: false,
         svgIcon: (
             <svg viewBox="0 0 40 40" fill="white" className="w-10 h-10">
@@ -34,7 +35,7 @@ const cards = [
         desc: "Gain access to millions of users, integrate with Blockchain's proprietary wallet",
     },
     {
-        icon: null,
+       icon: faviconIcon,
         isImg: false,
         svgIcon: (
             <svg viewBox="0 0 40 40" fill="white" className="w-10 h-10">
@@ -48,7 +49,7 @@ const cards = [
         desc: "Accelerate your token's adoption with reliable, transparent market making",
     },
     {
-        icon: null,
+       icon: faviconIcon,
         isImg: false,
         svgIcon: (
             <svg viewBox="0 0 40 40" fill="none" stroke="white" strokeWidth="3" className="w-10 h-10">
@@ -61,7 +62,7 @@ const cards = [
         desc: "Safeguard digital assets with military-grade security and rigorous regulatory compliance",
     },
     {
-        icon: null,
+       icon: faviconIcon,
         isImg: false,
         svgIcon: (
             <svg viewBox="0 0 40 40" fill="white" className="w-10 h-10">
@@ -79,7 +80,9 @@ const Section8 = () => {
     const [active, setActive] = useState(0);
 
     return (
-        <section className="relative text-white overflow-hidden py-14 px-5">
+        <motion.section className="relative text-white overflow-hidden py-14 px-5"
+            initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.7, ease: "easeOut" }}>
             {/* Blue BG */}
             <img
                 src={blueBg}
@@ -87,7 +90,7 @@ const Section8 = () => {
                 className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
             />
 
-            <div className="relative z-10 max-w-2xl mx-auto">
+            <div style={{backgroundImage:`url(${blueBg})`}} className="relative z-10 max-w-2xl mx-auto bg-no-repa">
                 {/* Heading */}
                 <h2 className="text-[clamp(3rem,9vw,4rem)] font-semibold text-center mb-4">
                     For business
@@ -100,7 +103,7 @@ const Section8 = () => {
                 {/* Active card */}
                 <div className="rounded-2xl p-6 px-10 h-96 flex z-40  flex-col justify-between mb-6"
                     style={{ background: "rgba(158, 161, 206, 0.2)", backdropFilter: "blur(2px)" }}>
-                    
+
                     <div className="flex flex-col gap-2 ">
                         <div className="py-10">
                             {cards[active].isImg ? (
@@ -131,7 +134,7 @@ const Section8 = () => {
                     ))}
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 

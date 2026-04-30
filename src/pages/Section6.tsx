@@ -1,14 +1,14 @@
+import { motion } from "framer-motion";
 import card1Bg from "../assets/cards2/card-1-v2.png";
 import card2Bg from "../assets/cards2/card-2-v2.png";
 import card3Bg from "../assets/cards2/card-3-v2.png";
-import card1Logo from "../assets/cards2/card-1-icon.jpg";
-import card2Logo from "../assets/cards2/card-2-icon.jpg";
+import card2Logo from "../assets/cards2/card-2-icon.png";
 import card3Logo from "../assets/cards2/favicon.ico";
 
 const cards = [
     {
         bg: card1Bg,
-        logo: card1Logo,
+        logo: card3Logo,
         title: "Security first",
         desc: "We've never lost customer funds",
     },
@@ -28,7 +28,9 @@ const cards = [
 
 const Section6 = () => {
     return (
-        <section className="bg-white text-black py-14 px-5">
+        <motion.section className="bg-white text-black py-14 px-5"
+            initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.7, ease: "easeOut" }}>
             <div className="max-w-2xl mx-auto">
 
                 {/* Heading */}
@@ -64,7 +66,7 @@ const Section6 = () => {
                 </div>
 
             </div>
-        </section>
+        </motion.section>
     );
 };
 

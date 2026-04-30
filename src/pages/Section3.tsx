@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import card1Bg from "../assets/card/card-1-v2.png";
 import card1Content from "../assets/card/card-content-1-v2.png";
 import card2Bg from "../assets/card/card-2-v2.png";
@@ -14,7 +15,13 @@ const cards = [
 
 const Section3 = () => {
     return (
-        <section className="bg-white text-black min-h-screen flex flex-col justify-center py-14 px-5 -mt-4 relative z-10 pb-0">
+        <motion.section
+            className="bg-white text-black min-h-screen flex flex-col justify-center py-14 px-5 -mt-4 relative z-10 pb-0"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+        >
             <div className="max-w-2xl mx-auto w-full">
 
                 {/* Header */}
@@ -55,7 +62,7 @@ const Section3 = () => {
                 </div>
 
             </div>
-        </section>
+        </motion.section>
     );
 };
 

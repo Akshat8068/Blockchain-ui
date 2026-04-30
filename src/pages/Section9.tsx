@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const stats = [
     { value: "$1.2T+", label: "Transacted" },
     { value: "5700+", label: "Tokens available" },
@@ -6,7 +8,9 @@ const stats = [
 
 const Section9 = () => {
     return (
-        <section className="bg-white text-black py-16 px-5 border-t border-gray-200">
+        <motion.section className="bg-white text-black py-16 px-5 border-t border-gray-200"
+            initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.7, ease: "easeOut" }}>
             <div className="max-w-sm mx-auto flex flex-col items-center">
                 {stats.map((stat, i) => (
                     <div key={i} className="w-full">
@@ -22,7 +26,7 @@ const Section9 = () => {
                     </div>
                 ))}
             </div>
-        </section>
+        </motion.section>
     );
 };
 

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import heroSm from "../assets/hero-sm-v2.png";
 import heroMd from "../assets/hero-md-v2.png";
 import heroPoster from "../assets/hero-poster-v3.png";
@@ -15,7 +16,13 @@ const institutionalLinks = [
 
 const Home = () => {
     return (
-        <main className="bg-black text-white">
+        <motion.main
+            className="bg-black text-white"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+        >
             <div className="max-w-7xl mx-auto my-5 px-5 md:px-10">
                 <section className="pt-10 pb-0">
 
@@ -91,7 +98,7 @@ const Home = () => {
 
                 </section>
             </div>
-        </main>
+        </motion.main>
     );
 };
 

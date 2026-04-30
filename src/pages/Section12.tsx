@@ -1,9 +1,12 @@
+import { motion } from "framer-motion";
 import careersLeft from "../assets/careers/careers-left-sm-v2.png";
 import careersRight from "../assets/careers/careers-right-sm-v2.png";
 
 const Section12 = () => {
     return (
-        <section className="bg-white text-black py-10 px-5 ">
+        <motion.section className="bg-white text-black py-10 px-5 "
+            initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.7, ease: "easeOut" }}>
             <div className="max-w-2xl mx-auto">
 
                 {/* Two images side by side */}
@@ -28,7 +31,7 @@ const Section12 = () => {
                 </div>
 
             </div>
-        </section>
+        </motion.section>
     );
 };
 

@@ -1,6 +1,10 @@
+import { motion } from "framer-motion";
+
 const Section7 = () => {
     return (
-        <section className="bg-white text-black py-20 px-5">
+        <motion.section className="bg-white text-black py-20 px-5"
+            initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.7, ease: "easeOut" }}>
             <div className="max-w-2xl mx-auto text-center">
                 <p className="text-[clamp(1.8rem,6vw,3rem)] leading-snug">
                     Way back when, we pioneered the world's{" "}
@@ -9,7 +13,7 @@ const Section7 = () => {
                     Now, use it to begin your own crypto journey
                 </p>
             </div>
-        </section>
+        </motion.section>
     );
 };
 

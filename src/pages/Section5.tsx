@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import bgSm from "../assets/download-app-bg-sm-v2.png";
 import appMockup from "../assets/download-app-v1.png";
 import appleLogo from "../assets/Apple.png";
@@ -5,16 +6,22 @@ import playstoreLogo from "../assets/playstore.png";
 
 const Section5 = () => {
     return (
-        <section className="relative bg-black text-white overflow-hidden">
+        <motion.section
+            className="relative bg-black text-white overflow-hidden"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+        >
 
             {/* BG image — top right glow */}
-            <img
+            {/* <img
                 src={bgSm}
                 alt=""
                 className="absolute top-0 right-0 w-2/3 object-contain pointer-events-none select-none"
-            />
+            /> */}
 
-            <div className="relative z-10 max-w-2xl mx-auto px-5 pt-14 pb-0">
+            <div style={{ backgroundImage: `url(${bgSm})` }} className="relative z-10 max-w-2xl mx-auto px-5 pt-14 pb-0 bg-no-repeat bg-right-top bg-cover">
 
                 {/* Heading */}
                 <h2 className="text-[clamp(3rem,11vw,4.5rem)] font-bold leading-tight mb-5">
@@ -40,7 +47,7 @@ const Section5 = () => {
 
                 {/* Store buttons */}
                 <div className="flex gap-3 mb-12 ">
-                    
+
                     <a href="#" className="flex items-center gap-2 border border-white/60 rounded-xl px-4 py-3 hover:bg-white/10 transition-colors">
                         <img src={appleLogo} alt="App Store" className="w-6 h-6 object-contain invert" />
                         <div>
@@ -70,7 +77,7 @@ const Section5 = () => {
                 </div>
 
             </div>
-        </section>
+        </motion.section>
     );
 };
 

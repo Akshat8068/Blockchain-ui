@@ -1,9 +1,12 @@
-import appleLogo from "../assets/appleicon.jpg";
+import { motion } from "framer-motion";
+import appleLogo from "../assets/appleicon.png";
 import playstoreLogo from "../assets/playstoreicon.png";
 
 const Section13 = () => {
     return (
-        <section className="text-black bg-white p-5" >
+        <motion.section className="text-black bg-white p-5"
+            initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.7, ease: "easeOut" }}>
             <div className="max-w-2xl rounded-xl p-10 mx-auto text-center bg-[#FEF8F6]">
 
                 {/* Heading */}
@@ -38,7 +41,7 @@ const Section13 = () => {
                 </div>
 
             </div>
-        </section>
+        </motion.section>
     );
 };
 

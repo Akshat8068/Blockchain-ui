@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import btcLogo from "../assets/logo/BTC.png";
 import ethLogo from "../assets/logo/ETH.png";
 import solLogo from "../assets/logo/SOL.png";
@@ -24,9 +25,13 @@ const Section2 = () => {
 
     return (
         // overlap hero section 
-        <section
+        <motion.section
             className="relative z-30 mx-2 rounded-xl overflow-hidden text-white "
             style={{ background: "linear-gradient(180deg, #4a4a4a 0%, #d1d1d1 100%)" }}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
         >
             <div className="max-w-2xl mx-auto px-5 py-10">
 
@@ -140,7 +145,7 @@ const Section2 = () => {
                 </div>
 
             </div>
-        </section>
+        </motion.section>
     );
 };
 

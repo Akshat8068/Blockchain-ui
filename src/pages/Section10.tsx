@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import vyLogo from "../assets/trusted/vy-v2.svg";
 import gvLogo from "../assets/trusted/gv-v2.svg";
 import lakeStarLogo from "../assets/trusted/lake-star-v2.svg";
@@ -18,7 +19,9 @@ const logos = [
 
 const Section10 = () => {
     return (
-        <section className="bg-white text-black py-10 px-5 ">
+        <motion.section className="bg-white text-black py-10 px-5 "
+            initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.7, ease: "easeOut" }}>
             <div className="max-w-2xl mx-auto">
 
                 <h2 className="text-[clamp(3.5rem,10vw,5rem)] font-bold leading-tight mb-12">
@@ -38,10 +41,10 @@ const Section10 = () => {
                     ))}
                 </div>
 
-                
+
 
             </div>
-        </section>
+        </motion.section>
     );
 };
 

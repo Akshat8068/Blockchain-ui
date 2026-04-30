@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import btc from "../assets/move itmes/prices-btc.svg";
 import eth from "../assets/move itmes/prices-eth.svg";
 import sol from "../assets/move itmes/prices-sol.svg";
@@ -64,7 +65,13 @@ const MarqueeRow = ({ items, reverse }: { items: typeof row1; reverse?: boolean 
 
 const Section4 = () => {
     return (
-        <section className="bg-white text-black  py-14 px-5 overflow-hidden">
+        <motion.section
+            className="bg-white text-black  py-14 px-5 overflow-hidden"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+        >
             <div className="max-w-2xl mx-auto mb-10">
                 <h2 className="text-[clamp(4rem,12vw,5rem)] font-bold leading-tight mb-4">
                     5700+<br />tradable<br />assets
@@ -80,7 +87,7 @@ const Section4 = () => {
                 <MarqueeRow items={row2} reverse />
                 <MarqueeRow items={row3} />
             </div>
-        </section>
+        </motion.section>
     );
 };
 

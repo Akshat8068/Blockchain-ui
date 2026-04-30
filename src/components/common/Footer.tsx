@@ -1,8 +1,9 @@
+import { motion } from "framer-motion";
 import footerBg from "../../assets/footer-sm-v2.png";
-import appleLogo from "../../assets/appStoreDownload.jpg";
+import appleLogo from "../../assets/appStoreDownload.png";
 import playstoreLogo from "../../assets/playstoreDownload.png";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../ui/accordion";
-import { X } from "lucide-react";
+import { CircleDollarSign, Globe, X } from "lucide-react";
 
 const footerLinks = [
     { title: "Products", links: ["Buy Crypto", "Sell Crypto", "Swap", "Send", "Earn", "Stake", "HODL", "DeFi", "App"] },
@@ -14,11 +15,13 @@ const footerLinks = [
 
 const Footer = () => {
     return (
-        <footer
+        <motion.footer
             className="relative text-white overflow-hidden"
             style={{ backgroundImage: `url(${footerBg})`, backgroundSize: "cover", backgroundPosition: "bottom" }}
+            initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.7, ease: "easeOut" }}
         >
-            <div className="relative z-10 max-w-2xl mx-auto px-5 pt-14 pb-10">
+            <div className="relative z-10 max-w-2xl mx-auto px-5 p-14">
 
                 <p className="text-3xl font-bold mb-8">Blockchain</p>
 
@@ -40,12 +43,12 @@ const Footer = () => {
                 </Accordion>
 
                 {/* Store buttons */}
-                <div className="flex justify-center items-center gap-3 mt-10 mb-8">
+                <div className="flex justify-center px-20 items-center ">
 
-                    <img src={appleLogo} alt="App Store" className="w-50 h-50 object-contain invert" />
+                    <img src={appleLogo} alt="App Store" className="w-60 h-60 object-contain  " />
 
 
-                    <img src={playstoreLogo} alt="Google Play" className="w-50 h-50 object-contain" />
+                    <img src={playstoreLogo} alt="Google Play" className="w-60 h-60 object-contain" />
 
 
                 </div>
@@ -68,21 +71,21 @@ const Footer = () => {
 
                 <div className="flex flex-col gap-3 mb-6">
                     <div className="flex items-center gap-2 text-white/60 text-sm">
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" /></svg>
+                        <Globe className="w-5 h-5"/>
                         <span>English</span>
                     </div>
                     <div className="flex items-center gap-2 text-white/60 text-sm">
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.86 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z" /></svg>
+                        <CircleDollarSign className="w-5 h-5"/>
                         <span>Blockchain.com</span>
                     </div>
                 </div>
 
-                <p className="text-white/40 text-xs leading-relaxed">
+                <p className="text-white/90 text-sm leading-relaxed">
                     Services may be provided by Blockchain.com, Inc., NMLS# 2024031
                 </p>
 
             </div>
-        </footer>
+        </motion.footer>
     );
 };
 

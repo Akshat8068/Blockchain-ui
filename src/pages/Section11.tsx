@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const cards = [
     {
@@ -32,7 +33,9 @@ const Section11 = () => {
     const [active, setActive] = useState(0);
 
     return (
-        <section className="bg-white text-black py-14 px-5 border-t border-gray-200">
+        <motion.section className="bg-white text-black py-14 px-5 border-t border-gray-200"
+            initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.7, ease: "easeOut" }}>
             <div className="max-w-2xl mx-auto ">
 
                 {/* Heading */}
@@ -83,7 +86,7 @@ const Section11 = () => {
                 </div>
 
             </div>
-        </section>
+        </motion.section>
     );
 };
 
