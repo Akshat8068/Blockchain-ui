@@ -16,7 +16,7 @@ const coins = [
 
 const Section2 = () => {
     const [selected, setSelected] = useState("BTC");
-    const [earnAmount, setEarnAmount] = useState(10000);
+    const [earnAmount, setEarnAmount] = useState();
 
     const coin = coins.find((c) => c.id === selected)!;
     const apyNum = parseFloat(coin.apy) / 100;
@@ -25,12 +25,12 @@ const Section2 = () => {
     return (
         // overlap hero section 
         <section
-            className="relative z-30 mx-4 md:mx-12 lg:mx-24 rounded-2xl overflow-hidden text-white -mt-32"
+            className="relative z-30 mx-4 md:mx-12 lg:mx-18 rounded-2xl overflow-hidden text-white -mt-32"
             style={{
                 background: "linear-gradient(180deg, #2e2e2e 0%, #5a5a5a 45%, #c0c0c0 75%, #ffffff 100%)" }}
             
         >
-            <div className="max-w-6xl mx-5 lg:px-0 py-10">
+            <div className="max-w-6xl mx-5 lg:px-0 py-5">
 
                 {/* Header */}
                 <h2 className="text-4xl md:text-3xl  font-semibold mb-2 leading-tight">
@@ -41,7 +41,7 @@ const Section2 = () => {
                 </p>
 
                 {/* Coin selector grid — 2 cols mobile, 3 cols md+ */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-2 w-full  mb-8">
+                {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:hidden gap-2 w-full  mb-8">
                     {coins.map((c) => (
                         <button
                             key={c.id}
@@ -57,13 +57,42 @@ const Section2 = () => {
                             </span>
                         </button>
                     ))}
-                </div>
+                </div>  */}
+                
+                <div className="grid  grid-cols-2 md:grid-cols-6 gap-y-6 gap-x-6 mb-8">
+                    {coins.map((c, i) => {
+                        let extraClass = "";
 
+                        // 2nd row items ko center shift karna
+                        if (i === 3) extraClass = "md:col-start-2";
+                        if (i === 4) extraClass = "md:col-start-4";
+
+                        return (
+                            <button
+                                key={c.id}
+                                onClick={() => setSelected(c.id)}
+                                className={`flex items-center gap-3 px-5 py-4 rounded-2xl transition-all text-left col-span-2 ${extraClass} ${selected === c.id
+                                        ? "bg-zinc-700/80 shadow-md"
+                                        : "hover:bg-zinc-700/40"
+                                    }`}
+                            >
+                                <img src={c.logo} className="w-10 h-10 rounded-full" />
+
+                                <div className="flex flex-col leading-tight">
+                                    <span className="font-semibold text-lg">{c.label}</span>
+                                    <span className="text-cyan-400 text-sm font-medium">
+                                        {c.apy} APY
+                                    </span>
+                                </div>
+                            </button>
+                        );
+                    })}
+                </div>
                 {/* White card */}
                 <div className="bg-white text-black rounded-2xl p-5 shadow-2xl">
 
                     {/* Coin header — mobile: stacked, md+: logo left + stats right */}
-                    <div className="md:flex justify-between md:gap-80 mb-5">
+                    <div className="md:flex justify-between md:gap-72 lg:gap-105  mb-8">
                         {/* Logo + name */}
                         <div className="flex items-start  gap-3 mb-4 md:mb-0 md:flex-shrink-0">
                             <img src={coin.logo} alt={coin.label} className="w-10 h-10 rounded-full" />
@@ -74,72 +103,74 @@ const Section2 = () => {
                         </div>
 
                         {/* Stats grid */}
-                        <div className="grid grid-cols-2 gap-1 mb-5 md:mb-0 md:flex-1">
+                        <div className="grid grid-cols-2 gap-3 space-x-1 lg:ml-20 mb-5 md:mb-0 md:flex-1">
                             <div>
-                                <p className="font-semibold text-lg">
-                                    {coin.price}{" "}
-                                    <span className="text-red-500 text-base">{coin.change}</span>
+                                <p className="font-bold text-xl">
+                                    {coin.price} 
+                                    <span className="text-red-500 ml-0.4 text-base">{coin.change}</span>
                                 </p>
-                                <p className="text-gray-400 text-base">Price</p>
+                                <p className=" text-lg">Price</p>
                             </div>
                             <div>
                                 <p className="font-bold text-lg text-green-600">{coin.apy}</p>
-                                <p className="text-gray-400 text-base">Current Rate</p>
+                                <p className=" text-lg">Current Rate</p>
                             </div>
                             <div>
-                                <p className="font-semibold text-lg">
+                                <p className="font-bold text-lg">
                                     {coin.mcap}{" "}
                                     <span className="text-red-500 text-base">{coin.change}</span>
                                 </p>
-                                <p className="text-gray-400 text-base">Market Cap</p>
+                                <p className=" text-lg">Market Cap</p>
+                            </div>
+                            <div  >
+                                <p className="font-bold text-lg">Active</p>
+                                <p className="text-lg">Reward strategy</p>
                             </div>
                             <div>
-                                <p className="font-semibold text-lg">Active</p>
-                                <p className="text-gray-400 text-base">Reward strategy</p>
-                            </div>
-                            <div>
-                                <p className="font-semibold text-lg">{coin.vol}</p>
-                                <p className="text-gray-400 text-base">24h Volume</p>
+                                <p className="font-bold text-lg">{coin.vol}</p>
+                                <p className="text-lg">24h Volume</p>
                             </div>
                             {/* Sparkline */}
-                            <div className="flex flex-col justify-end">
+                            <div className="flex flex-col mt-3 justify-end">
                                 <svg viewBox="0 0 80 30" className="w-20 h-8 text-teal-500" fill="none" stroke="currentColor" strokeWidth="1.5">
                                     <polyline points="0,25 10,20 20,22 30,15 40,18 50,10 60,14 70,8 80,12" />
                                 </svg>
-                                <p className="text-gray-400 text-xs">Last 7 days</p>
+                                <p className=" text-base">Last 7 days</p>
                             </div>
                         </div>
                     </div>
 
-                    <hr className="border-gray-200 mb-5" />
-
                     {/* Estimate rewards */}
-                    <h3 className="text-2xl mb-1">Estimate your rewards</h3>
-                    <p className=" text-base mb-1">
+                    <h3 className="text-[28px] mb-1">Estimate your rewards</h3>
+                    <p className=" text-lg ">
                         Get a sense of how much yield you may receive after a year's investment.
                     </p>
-                    <p className=" text-base mb-5">Paid monthly.</p>
+                    <p className=" text-lg mb-5">Paid monthly.</p>
 
-                    <div className="flex flex-col lg:flex-row gap-3 mb-5">
-                        <div className="border border-gray-300 md:border-teal-400 rounded-xl px-4 py-3">
-                            <p className="text-sm mb-1">I want to earn on</p>
+                    <div className="flex flex-1 flex-col gap-3 mb-5">
+                        <div className="border border-gray-300 md:border-gray-400 rounded-xl px-4 py-3">
+                            <p className="text-base mb-1">I want to earn on</p>
                             <div className="flex items-center gap-1">
-                                <span className="text-gray-400">₹</span>
+                                <span className="font-bold text-xl">₹</span>
                                 <Input
                                     type="number"
                                     value={earnAmount}
+                                    placeholder="10000"
                                     onChange={(e) => setEarnAmount(Number(e.target.value))}
-                                    className="border-0 p-0 h-auto text-gray-800 text-lg font-medium bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 shadow-none"
+                                    className="border-0 p-0 h-auto text-gray-400 text-lg font-semibold bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 shadow-none"
                                 />
                             </div>
                         </div>
-                        <div className="border border-gray-300 md:border-teal-400 rounded-xl px-4 py-3">
-                            <p className="text-sm mb-1">You could earn</p>
-                            <p className="text-gray-800 text-lg font-medium">₹{couldEarn.toLocaleString()}</p>
+                        <div className="border border-gray-300 md:border-gray-400 rounded-xl px-4 py-3">
+                            <p className="text-base mb-1">You could earn</p>
+                            <div className="flex items-center gap-1">
+                                <span className="font-bold text-xl">₹</span>
+                                <span className="text-gray-400 text-xl font-semibold">{couldEarn.toLocaleString()}</span>
+                            </div>
                         </div>
                     </div>
 
-                    <button className="w-full bg-[#e8174a] hover:bg-[#c9143f] text-white font-semibold py-4 rounded-xl transition-colors text-lg">
+                    <button className="w-full bg-[#c9143f] hover:bg-[#c9143f] text-white font-semibold py-4 rounded-xl transition-colors text-base">
                         Discover more
                     </button>
                 </div>

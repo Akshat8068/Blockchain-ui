@@ -43,7 +43,7 @@ const Section5 = () => {
 
             {/* MOBILE */}
             <div className="md:hidden" style={{ backgroundImage: `url(${bgSm})`, backgroundSize: "cover", backgroundPosition: "right top", backgroundRepeat: "no-repeat" }}>
-                <div className="max-w-2xl mx-auto px-5 pt-14 pb-0">
+                <div className="max-w-2xl   pt-14 pb-0">
                     <h2 className="text-[clamp(3rem,11vw,4.5rem)] font-bold leading-tight mb-5">
                         One of the world's most loved crypto apps
                     </h2>

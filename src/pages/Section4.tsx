@@ -73,7 +73,7 @@ const Section4 = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
         >
             <div className="max-w-2xl md:max-w-4xl mx-auto mb-10 md:text-center">
-                <h2 className="text-[clamp(4rem,12vw,5rem)] md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
+                <h2 className="text-[clamp(4rem,12vw,5rem)] md:text-6xl lg:text-6xl font-bold tracking-[-1px] mb-4">
                     5700+ tradable assets
                 </h2>
                 <p className="text-2xl md:text-xl lg:text-2xl">
@@ -82,7 +82,11 @@ const Section4 = () => {
             </div>
 
             {/* Marquee rows */}
-            <div className="flex flex-col max-w-6xl mx-auto px-2 md:px-5 lg:px-8 gap-6">
+            <div className="relative flex flex-col max-w-6xl mx-auto px-2 md:px-5 lg:px-8 gap-6">
+                {/* Left fade */}
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-white to-transparent" />
+                {/* Right fade */}
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-white to-transparent" />
                 <MarqueeRow items={row1} />
                 <MarqueeRow items={row2} reverse />
                 <MarqueeRow items={row3} />

@@ -19,7 +19,7 @@ const Section3 = () => {
 
     return (
         <motion.section
-            className="bg-white text-black min-h-screen flex flex-col justify-center py-14 px-5 -mt-4 relative z-10 pb-0"
+            className="bg-white text-black min-h-screen  flex flex-col justify-center py-24 px-14 -mt-4 relative z-10 pb-0"
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
@@ -50,17 +50,43 @@ const Section3 = () => {
                 </div>
             </div>
 
-            {/* LG — 3 cards visible slider, 2 dots */}
-            <div className="hidden lg:block max-w-7xl mx-auto w-full">
-                <div className="px-10">
-                    <h2 className="text-5xl xl:text-6xl font-semibold leading-tight mb-3">
+            {/* LG — 2x2 grid */}
+            <div className="hidden lg:block xl:hidden max-w-6xl  mx-auto w-full">
+                <div>
+                    <h2 className="text-[56px] font-semibold tracking-[-3px] ">
                         Be Your Own Bank®
                     </h2>
-                    <p className="text-xl mb-10">
+                    <p className="text-3xl mb-14 ">
                         Trading platform and DeFi Wallet, all in one application
                     </p>
-               </div>
+                </div>
+                <div className="grid grid-cols-2 gap-6 space-x-40">
+                    {cards.map((card) => (
+                        <div key={card.id} className="flex w-4/5   gap-1  flex-col gap-3">
+                            <div className="relative  w-[500px] h-[450px] rounded-2xl overflow-hidden">
+                                <img src={card.bg} alt="" className="absolute w-full inset-0 h-full w-full object-cover" />
+                                {card.content && (
+                                    <div className="absolute inset-0 flex items-center p-14 justify-center p-5">
+                                        <img src={card.content} alt="" className="w-full max-w-[80%] object-cover drop-shadow-xl" />
+                                    </div>
+                                )}
+                            </div>
+                            <p className="text-black font-semibold text-2xl leading-snug">{card.label}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
 
+            {/* XL — swiper slider, 3 cards visible */}
+            <div className="hidden xl:block max-w-7xl xl:px-14 mx-auto w-full">
+                <div>
+                    <h2 className="text-6xl font-semibold tracking-[-3px] mb-3">
+                        Be Your Own Bank®
+                    </h2>
+                    <p className="text-3xl mb-10">
+                        Trading platform and DeFi Wallet, all in one application
+                    </p>
+                </div>
                 <div className="overflow-hidden mb-8">
                     <div
                         className="flex gap-6 transition-transform duration-300 ease-in-out"
@@ -81,7 +107,6 @@ const Section3 = () => {
                         ))}
                     </div>
                 </div>
-
                 {/* 2 dots */}
                 <div className="flex items-center justify-center gap-2">
                     {[0, 1].map((i) => (
