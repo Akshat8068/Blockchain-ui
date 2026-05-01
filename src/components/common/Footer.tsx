@@ -1,34 +1,69 @@
 import { motion } from "framer-motion";
 import footerBg from "../../assets/footer-sm-v2.png";
+import footerMdBg from "../../assets/footer-md-v2.png";
+import footerLgBg from "../../assets/footer-bg-v3.png";
 import appleLogo from "../../assets/appStoreDownload.png";
 import playstoreLogo from "../../assets/playstoreDownload.png";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../ui/accordion";
 import { CircleDollarSign, Globe, X } from "lucide-react";
+import qrCode from "../../assets/QR_code_for_mobile_white.png";
 
 const footerLinks = [
-    { title: "Products", links: ["Buy Crypto", "Sell Crypto", "Swap", "Send", "Earn", "Stake", "HODL", "DeFi", "App"] },
-    { title: "Resources", links: ["Help Center", "Status", "Blog", "Developers", "API"] },
-    { title: "Company", links: ["About", "Careers", "Press", "Legal", "Privacy Policy"] },
-    { title: "Learn", links: ["What is Bitcoin?", "What is Ethereum?", "What is DeFi?", "What is a Wallet?"] },
+    { title: "Products", links: ["Wallet", "Explorer", "Institutional", "Earn", "Pay"] },
+    { title: "Resources", links: ["APIs", "Blog", "Podcast", "Bitcoin Price", "Ethereum Price", "Solana Price"] },
+    { title: "Company", links: ["About", "Careers", "Ventures", "Press Center", "Support", "Legal & Privacy", "EU Regulatory Documents", "MiCA White-Paper", "Complaints Handling"] },
+    { title: "Learn", links: ["What is Bitcoin?", "What is a crypto wallet?", "What is a DEX?", "What assets do we support?", "Learning Portal"] },
     { title: "Buying Guides", links: ["How to Buy Bitcoin", "How to Buy Ethereum", "How to Buy Crypto"] },
 ];
+
+const SocialIcons = () => (
+    <div className="flex items-center gap-5">
+        <a href="#" aria-label="X" className="text-white/70 hover:text-white transition-colors">
+            <X className="w-6 h-6" />
+        </a>
+        <a href="#" aria-label="LinkedIn" className="text-white/70 hover:text-white transition-colors">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+        </a>
+        <a href="#" aria-label="Instagram" className="text-white/70 hover:text-white transition-colors">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" /></svg>
+        </a>
+        <a href="#" aria-label="Facebook" className="text-white/70 hover:text-white transition-colors">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
+        </a>
+    </div>
+);
 
 const Footer = () => {
     return (
         <motion.footer
             className="relative text-white overflow-hidden"
-            style={{ backgroundImage: `url(${footerBg})`, backgroundSize: "cover", backgroundPosition: "bottom" }}
             initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.7, ease: "easeOut" }}
         >
-            <div className="relative z-10 max-w-2xl mx-auto px-5 p-14">
+            {/* Background images per breakpoint */}
+            <div
+                className="absolute inset-0 bg-cover bg-bottom md:hidden"
+                style={{ backgroundImage: `url(${footerBg})` }}
+            />
+            <div
+                className="absolute inset-0 bg-cover bg-bottom hidden md:block lg:hidden"
+                style={{ backgroundImage: `url(${footerMdBg})` }}
+            />
+            <div
+                className="absolute inset-0 bg-cover bg-bottom hidden lg:block"
+                style={{ backgroundImage: `url(${footerLgBg})` }}
+            />
+            {/* <div className={`absolute inset-0 bg-cover  bg-[url(${footerBg})] md:bg-[url({${footerMdBg})] md:bg-[url({${footerLgBg})] `} /> */}
 
-                <p className="text-3xl font-bold mb-8">Blockchain</p>
+
+            {/* ── MOBILE layout (hidden on md+) ── */}
+            <div className="relative z-10 md:hidden max-w-2xl mx-auto px-5 pt-16 pb-10">
+                <p className="text-5xl font-semibold mb-8">Blockchain</p>
 
                 <Accordion type="multiple">
                     {footerLinks.map((section) => (
                         <AccordionItem key={section.title} value={section.title}>
-                            <AccordionTrigger>{section.title}</AccordionTrigger>
+                            <AccordionTrigger className="text-base font-bold">{section.title}</AccordionTrigger>
                             <AccordionContent>
                                 <ul className="flex flex-col gap-3">
                                     {section.links.map((link) => (
@@ -42,48 +77,110 @@ const Footer = () => {
                     ))}
                 </Accordion>
 
-                {/* Store buttons */}
-                <div className="flex justify-center px-20 items-center ">
-
-                    <img src={appleLogo} alt="App Store" className="w-60 h-60 object-contain  " />
-
-
-                    <img src={playstoreLogo} alt="Google Play" className="w-60 h-60 object-contain" />
-
-
+                <div className="flex justify-center items-center mt-8">
+                    <img src={appleLogo} alt="App Store" className="w-44 h-44 object-contain" />
+                    <img src={playstoreLogo} alt="Google Play" className="w-44 h-44 object-contain" />
                 </div>
 
-                {/* Social icons */}
                 <div className="flex items-center gap-5 mb-8">
-                    <a href="#" aria-label="X" className="text-white/70 hover:text-white transition-colors">
-                        <X className="w-6 h-6" />
-                    </a>
-                    <a href="#" aria-label="LinkedIn" className="text-white/70 hover:text-white transition-colors">
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
-                    </a>
-                    <a href="#" aria-label="Instagram" className="text-white/70 hover:text-white transition-colors">
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" /></svg>
-                    </a>
-                    <a href="#" aria-label="Facebook" className="text-white/70 hover:text-white transition-colors">
-                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
-                    </a>
+                    <SocialIcons />
                 </div>
 
                 <div className="flex flex-col gap-3 mb-6">
                     <div className="flex items-center gap-2 text-white/60 text-sm">
-                        <Globe className="w-5 h-5"/>
-                        <span>English</span>
+                        <Globe className="w-5 h-5" /><span>English</span>
                     </div>
                     <div className="flex items-center gap-2 text-white/60 text-sm">
-                        <CircleDollarSign className="w-5 h-5"/>
-                        <span>Blockchain.com</span>
+                        <CircleDollarSign className="w-5 h-5" /><span>Blockchain.com</span>
                     </div>
                 </div>
 
                 <p className="text-white/90 text-sm leading-relaxed">
                     Services may be provided by Blockchain.com, Inc., NMLS# 2024031
                 </p>
+            </div>
 
+            {/* ── MD + LG layout (hidden on mobile) ── */}
+            <div className="relative z-10 hidden md:block max-w-6xl mx-auto px-8 md:px-10 lg:px-16 pt-14 pb-10">
+
+                {/* Top row: Blockchain | line | social icons */}
+                <div className="flex items-center mb-10 md:mb-12">
+                    <p className="text-4xl lg:text-5xl font-semibold whitespace-nowrap">Blockchain</p>
+                    <div className="flex-1 border-t border-white/30 mx-4 lg:mx-6" />
+                    <SocialIcons />
+                </div>
+
+                {/* Main content: QR + 4 link columns */}
+                <div className="grid grid-cols-5 gap-4 lg:gap-8 mb-10 lg:mb-14">
+
+                    {/* QR column */}
+                    <div className="col-span-1 flex flex-col items-start gap-3">
+                        <div className="bg-white rounded-lg p-2 md:p-3 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 flex items-center justify-center">
+                            <img src={qrCode} alt="QR Code" className="w-full h-full object-contain" />
+                        </div>
+                        <p className="text-white/70 text-xs md:text-sm">Scan to download</p>
+                    </div>
+
+                    {/* Products */}
+                    <div className="col-span-1">
+                        <p className="font-bold text-sm md:text-base mb-4">Products</p>
+                        <ul className="flex flex-col gap-2 md:gap-3">
+                            {footerLinks[0].links.map(link => (
+                                <li key={link}><a href="#" className="text-white/60 hover:text-white transition-colors text-xs md:text-sm">{link}</a></li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Resources */}
+                    <div className="col-span-1">
+                        <p className="font-bold text-sm md:text-base mb-4">Resources</p>
+                        <ul className="flex flex-col gap-2 md:gap-3">
+                            {footerLinks[1].links.map(link => (
+                                <li key={link}><a href="#" className="text-white/60 hover:text-white transition-colors text-xs md:text-sm">{link}</a></li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Company */}
+                    <div className="col-span-1">
+                        <p className="font-bold text-sm md:text-base mb-4">Company</p>
+                        <ul className="flex flex-col gap-2 md:gap-3">
+                            {footerLinks[2].links.map(link => (
+                                <li key={link} className="flex items-center gap-2">
+                                    <a href="#" className="text-white/60 hover:text-white transition-colors text-xs md:text-sm">{link}</a>
+                                    {link === "Careers" && (
+                                        <span className="bg-red-600 text-white text-[10px] px-1.5 py-0.5 rounded font-semibold">Hiring</span>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Learn */}
+                    <div className="col-span-1">
+                        <p className="font-bold text-sm md:text-base mb-4">Learn</p>
+                        <ul className="flex flex-col gap-2 md:gap-3">
+                            {footerLinks[3].links.map(link => (
+                                <li key={link}><a href="#" className="text-white/60 hover:text-white transition-colors text-xs md:text-sm">{link}</a></li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+
+                {/* Bottom row: English + Blockchain.com */}
+                <div className="flex flex-col gap-3 mb-8">
+                    <div className="flex items-center gap-2 text-white/60 text-sm">
+                        <Globe className="w-5 h-5" /><span>English</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-white/60 text-sm">
+                        <CircleDollarSign className="w-5 h-5" /><span>Blockchain</span>
+                    </div>
+                </div>
+
+                {/* Services text */}
+                <p className="text-white/60 text-xs md:text-sm text-center">
+                    Services may be provided by Blockchain.com, Inc., NMLS# 2024031
+                </p>
             </div>
         </motion.footer>
     );

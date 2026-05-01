@@ -14,36 +14,66 @@ const logos = [
     { src: lightspeedLogo, alt: "Lightspeed" },
     { src: kyleBassLogo, alt: "Kyle Bass" },
     { src: dstLogo, alt: "DST Global Partners" },
-    { src: baillieGiffordLogo, alt: "Baillie Gifford" }
+    { src: baillieGiffordLogo, alt: "Baillie Gifford" },
 ];
+
+// Triplicate for seamless infinite loop
+const marqueeLogos = [...logos, ...logos, ...logos];
+
+const Marquee = () => (
+    <div className="overflow-hidden w-full">
+        <div className="flex animate-marquee" style={{ width: "max-content" }}>
+            {marqueeLogos.map((logo, i) => (
+                <div key={i} className="flex items-center justify-center px-10 flex-shrink-0">
+                    <img src={logo.src} alt={logo.alt} className="h-14 object-contain" />
+                </div>
+            ))}
+        </div>
+    </div>
+);
 
 const Section10 = () => {
     return (
-        <motion.section className="bg-white text-black py-10 px-5 "
+        <motion.section className="bg-white text-black py-10 px-5"
             initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.7, ease: "easeOut" }}>
-            <div className="max-w-2xl mx-auto">
 
+            {/* MOBILE — grid layout */}
+            <div className="md:hidden max-w-2xl mx-auto">
                 <h2 className="text-[clamp(3.5rem,10vw,5rem)] font-bold leading-tight mb-12">
                     Trusted<br />by leading<br />investors
                 </h2>
-
-                {/* 2-col grid for first 6 */}
-                <div className="grid grid-cols-2 gap-x-8 gap-y-10 mb-10">
+                <div className="grid grid-cols-2 gap-x-8 gap-y-10">
                     {logos.map((logo) => (
                         <div key={logo.alt} className="flex items-center justify-center">
-                            <img
-                                src={logo.src}
-                                alt={logo.alt}
-                                className="h-15 object-contain"
-                            />
+                            <img src={logo.src} alt={logo.alt} className="h-15 object-contain" />
                         </div>
                     ))}
                 </div>
-
-
-
             </div>
+
+            {/* MD — heading top, horizontal line, marquee below */}
+            <div className="hidden md:block px-5 lg:hidden max-w-4xl mx-auto">
+                <h2 className="text-5xl font-bold px-14 text-start leading-tight mb-8">
+                    Trusted<br />by leading investors
+                </h2>
+                <div className=" pt-8">
+                    <Marquee />
+                </div>
+            </div>
+
+            {/* LG — heading left, marquee right */}
+            <div className="hidden lg:flex items-center gap-10 max-w-7xl mx-auto">
+                <div className="w-1/3 flex-shrink-0 px-10">
+                    <h2 className="text-5xl xl:text-6xl px-5 font-bold leading-tight">
+                        Trusted<br />by leading<br />investors
+                    </h2>
+                </div>
+                <div className="flex-1 overflow-hidden">
+                    <Marquee />
+                </div>
+            </div>
+
         </motion.section>
     );
 };

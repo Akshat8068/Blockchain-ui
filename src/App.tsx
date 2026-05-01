@@ -1,23 +1,24 @@
-import Navbar from "./components/common/Navbar";
-import Home from "./pages/Home";
-import Section2 from "./pages/Section2";
-import Section3 from "./pages/Section3";
-import Section4 from "./pages/Section4";
-import Section5 from "./pages/Section5";
-import Section6 from "./pages/Section6";
-import Section7 from "./pages/Section7";
-import Section8 from "./pages/Section8";
-import Section9 from "./pages/Section9";
-import Section10 from "./pages/Section10";
-import Section11 from "./pages/Section11";
-import Section12 from "./pages/Section12";
-import Section13 from "./pages/Section13";
-import Footer from "./components/common/Footer";
+import { lazy, Suspense } from "react";
+const Navbar = lazy(() => import("./components/common/Navbar"));
 
+const Home = lazy(() => import("./pages/Home"));
+const Section2 = lazy(() => import("./pages/Section2"));
+const Section3 = lazy(() => import("./pages/Section3"));
+const Section4 = lazy(() => import("./pages/Section4"));
+const Section5 = lazy(() => import("./pages/Section5"));
+const Section6 = lazy(() => import("./pages/Section6"));
+const Section7 = lazy(() => import("./pages/Section7"));
+const Section8 = lazy(() => import("./pages/Section8"));
+const Section9 = lazy(() => import("./pages/Section9"));
+const Section10 = lazy(() => import("./pages/Section10"));
+const Section11 = lazy(() => import("./pages/Section11"));
+const Section12 = lazy(() => import("./pages/Section12"));
+const Section13 = lazy(() => import("./pages/Section13"));
+const Footer = lazy(() => import("./components/common/Footer"));
 const App = () => {
   return (
-    <div className="bg-black">
-      <Navbar />
+    <Suspense fallback={<div className="text-white text-center py-10">Loading...</div>}>
+      <Navbar/>
       <Home />
       <Section2 />
       <Section3 />
@@ -32,7 +33,7 @@ const App = () => {
       <Section12 />
       <Section13 />
       <Footer />
-    </div>
+    </Suspense>
   );
 };
 

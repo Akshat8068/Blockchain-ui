@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import heroSm from "../assets/hero-sm-v2.png";
 import heroMd from "../assets/hero-md-v2.png";
 import heroPoster from "../assets/hero-poster-v3.png";
@@ -16,57 +15,53 @@ const institutionalLinks = [
 
 const Home = () => {
     return (
-        <motion.main
-            className="bg-black text-white"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+        <main
+            className="bg-black text-white pt-28 pb-0 relative"
         >
-            <div className="max-w-7xl mx-auto my-5 px-5 md:px-10">
-                <section className="pt-10 pb-0">
+            <div className="max-w-7xl mx-auto   px-5 md:px-20">
+                <section className=" pb-40">
 
-                    {/* Desktop: heading left, nav links right */}
-                    <div className="flex flex-col md:flex-row md:items-start md:gap-12">
+                    {/* Heading + links stacked on sm/md, side by side on lg */}
+                    <div className="flex flex-col lg:flex-row lg:items-start lg:gap-12 lg:mb-10">
 
                         {/* Heading + subtitle */}
-                        <div className="flex-1">
-                            <h1 className="text-[clamp(3.2rem,11vw,7rem)] font-bold leading-[0.93] tracking-tight">
+                        <div className="flex-1 min-w-0">
+                            <h1 className="text-[clamp(3.2rem,11vw,7rem)] lg:text-[7rem] font-bold leading-[0.93] tracking-tight">
                                 Invest like<br />an icon
                             </h1>
-                            <p className="text-base md:text-lg text-white/90 mt-5 leading-relaxed max-w-sm">
+                            <p className="text-base text-white/90 mt-5 leading-relaxed max-w-lg">
                                 We power crypto access for everyone: from private people, to pros,
                                 to public companies. Here since the beginning of crypto.
                             </p>
                         </div>
 
-                        {/* Nav links — desktop only */}
-                        <div className="hidden md:flex items-start gap-16 mt-2 shrink-0">
+                        {/* Nav links — hidden on sm, visible md+ */}
+                        <div className="hidden md:flex items-start gap-8 mt-8 lg:mt-2 shrink-0">
                             <div>
-                                <h3 className="font-bold text-xl mb-4">Personal</h3>
-                                <div className="flex gap-10">
-                                    <ul className="flex flex-col gap-2">
+                                <h3 className="font-bold text-base lg:text-xl mb-3">Personal</h3>
+                                <div className="flex gap-6">
+                                    <ul className="flex flex-col gap-1.5">
                                         {personalLinks1.map((l) => (
                                             <li key={l}>
-                                                <a href="#" className="text-base text-white/80 hover:text-white transition-colors">{l}</a>
+                                                <a href="#" className="text-base lg:text-lg text-white hover:text-white transition-colors">{l}</a>
                                             </li>
                                         ))}
                                     </ul>
-                                    <ul className="flex flex-col gap-2">
+                                    <ul className="flex flex-col gap-1.5">
                                         {personalLinks2.map((l) => (
                                             <li key={l}>
-                                                <a href="#" className="text-base text-white/80 hover:text-white transition-colors">{l}</a>
+                                                <a href="#" className="text-base lg:text-lg text-white hover:text-white transition-colors">{l}</a>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
                             </div>
                             <div>
-                                <h3 className="font-bold text-xl mb-4">Institutional</h3>
-                                <ul className="flex flex-col gap-2">
+                                <h3 className="font-bold text-base lg:text-xl mb-3">Institutional</h3>
+                                <ul className="flex flex-col gap-1.5">
                                     {institutionalLinks.map((l) => (
                                         <li key={l}>
-                                            <a href="#" className="text-base text-white/80 hover:text-white transition-colors">{l}</a>
+                                            <a href="#" className="text-base lg:text-lg text-white hover:text-white transition-colors">{l}</a>
                                         </li>
                                     ))}
                                 </ul>
@@ -98,7 +93,7 @@ const Home = () => {
 
                 </section>
             </div>
-        </motion.main>
+        </main>
     );
 };
 
