@@ -6,7 +6,7 @@ const Accordion = AccordionPrimitive.Root;
 
 const AccordionItem = ({ className, ...props }: React.ComponentProps<typeof AccordionPrimitive.Item>) => (
     <AccordionPrimitive.Item
-        className={cn("border-b border-white/20", className)}
+        className={cn("", className)}
         {...props}
     />
 );
@@ -21,7 +21,7 @@ const AccordionTrigger = ({ className, children, ...props }: React.ComponentProp
             {...props}
         >
             {children}
-            <ChevronDown className="h-4 w-4 shrink-0 text-white/70 transition-transform duration-200" />
+            <ChevronDown className="h-4 w-4 shrink-0 text-white transition-transform duration-200" />
         </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
 );

@@ -6,8 +6,8 @@ const Navbar = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
 
     return (
-        <nav className="w-full bg-black  top-0 z-50">
-            <div className="max-w-7xl mx-auto px-2 md:px-5 h-16 flex items-center">
+        <nav className="w-full bg-black  top-0 pt-1 px-2 z-50">
+            <div className="max-w-7xl mx-auto px-2 px-1 h-16 flex items-center">
                 <a href="/" className="shrink-0">
                     <img src={logo} alt="Blockchain" className="h-6 w-auto" />
                 </a>
@@ -15,7 +15,7 @@ const Navbar = () => {
                 <div className="flex-1" />
 
                 <div className="flex items-center gap-3">
-                    <a href="#" className="bg-[#e8174a] text-white text-sm font-semibold px-5 py-2 rounded-2xl hover:bg-[#c9143f] transition-colors">Sign up</a>
+                    <a href="#" className="bg-[#e8174a] text-white text-sm font-semibold px-5 py-3 rounded-2xl hover:bg-[#c9143f] transition-colors">Sign up</a>
                     <button onClick={() => setMobileOpen(!mobileOpen)} className="text-white p-1" aria-label="Toggle menu">
                         {mobileOpen ? <X size={22} /> : <Menu size={22} />}
                     </button>

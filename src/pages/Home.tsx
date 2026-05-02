@@ -1,5 +1,5 @@
 import heroMd from "../assets/hero-md-v2.png";
-
+import heroSm from "../assets/hero-sm-v2.png"
 const personalLinks1 = ["Deposit", "Buy", "Sell", "HODL", "App", "DeFi"];
 const personalLinks2 = ["Swap", "Send", "Earn", "Stake", "VIP", "June"];
 const institutionalLinks = [
@@ -13,12 +13,12 @@ const institutionalLinks = [
 
 const Home = () => {
     return (
-        <main className="bg-black text-white pt-20 pb-0 relative">
-            <div className="max-w-7xl mx-auto px-5 md:px-10 lg:px-24 ">
+        <main className="bg-black text-white py-22 md:py-28 md:mb-0 lg:pt-18 lg:pb-0 relative">
+            <div className="max-w-7xl md:hidden mx-auto px-4.5 md:px-10 lg:px-24 ">
                 <section className="pb-0">
 
                     {/* Heading */}
-                    <h1 className="text-8xl font-bold leading-[0.9] tracking-[-0.04em]">
+                    <h1 className="text-6xl md:text-8xl font-bold  tracking-[-0.04em]">
                         Invest like<br />an icon
                     </h1>
 
@@ -30,7 +30,7 @@ const Home = () => {
                     </p>
 
                     {/* Nav links — below heading, full width row */}
-                    <div className="flex items-start gap-28 mt-10 mb-0">
+                    <div className="hidden  md:flex items-start lg:gap-24 mt-10 mb-0">
                         {/* Personal — 2 columns */}
                         <div>
                             <h3 className="font-bold text-3xl mb-4">Personal</h3>
@@ -53,7 +53,69 @@ const Home = () => {
                         </div>
 
                         {/* Institutional — 1 column */}
-                        <div className="lg:mx-5">
+                        <div  className="hidden md:block lg:mx-5">
+                            <h3 className="font-bold text-3xl mb-4">Institutional</h3>
+                            <ul className="flex flex-col gap-2">
+                                {institutionalLinks.map((l) => (
+                                    <li key={l}>
+                                        <a href="#" className="text-xl hover:text-white/70 transition-colors">{l}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+
+                    {/* Hero image */}
+                    <div className="w-full mt-8 -mx-5 md:mx-0">
+                        <img
+                            src={heroSm}
+                            alt="Crypto coins"
+                            className="w-full object-contain mix-blend-lighten"
+                        />
+                    </div>
+
+                </section>
+            </div>
+            <div className="hidden md:block max-w-7xl mx-auto px-4.5 md:px-10 lg:px-24 ">
+                <section className="pb-0">
+
+                    {/* Heading */}
+                    <h1 className="text-6xl md:text-8xl font-bold  tracking-[-0.04em]">
+                        Invest like<br />an icon
+                    </h1>
+
+                    {/* Subtitle — narrow so it wraps to 3 lines */}
+                    <p className="text-[26px]  mt-6  leading-tight max-w-[600px]">
+                        We power crypto access for everyone: from private
+                        people, to pros, to public companies. Here since the
+                        beginning of crypto.
+                    </p>
+
+                    {/* Nav links — below heading, full width row */}
+                    <div className="hidden  md:flex items-start lg:gap-24 mt-10 mb-0">
+                        {/* Personal — 2 columns */}
+                        <div>
+                            <h3 className="font-bold text-3xl mb-4">Personal</h3>
+                            <div className="flex gap-10">
+                                <ul className="flex flex-col gap-2">
+                                    {personalLinks1.map((l) => (
+                                        <li key={l}>
+                                            <a href="#" className="text-xl  hover:text-white/70 transition-colors">{l}</a>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <ul className="flex flex-col gap-2">
+                                    {personalLinks2.map((l) => (
+                                        <li key={l}>
+                                            <a href="#" className="text-xl  hover:text-white/70 transition-colors">{l}</a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Institutional — 1 column */}
+                        <div className="hidden md:block lg:mx-5">
                             <h3 className="font-bold text-3xl mb-4">Institutional</h3>
                             <ul className="flex flex-col gap-2">
                                 {institutionalLinks.map((l) => (

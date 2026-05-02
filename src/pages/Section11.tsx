@@ -10,13 +10,13 @@ const cards = [
 ];
 
 const CardItem = ({ card }: { card: typeof cards[0] }) => (
-    <div className="bg-[#F6F1EF] rounded-2xl p-8 flex flex-col justify-between" style={{ minHeight: "320px" }}>
+    <div className="bg-[#F6F1EF] rounded-2xl px-6 py-8 flex flex-col justify-between" style={{ minHeight: "320px" }}>
         <div>
-            <p className="text-gray-800 text-lg mb-3">{card.date}</p>
+            <p className="text-gray-800 text-base mb-3">{card.date}</p>
             <h3 className="text-2xl font-semibold mb-3">{card.title}</h3>
             <p className="text-gray-800 text-lg">{card.desc}</p>
         </div>
-        <a href="#" className="text-black font-bold underline text-xl mt-6 block">Read more →</a>
+        <a href="#" className="text-black font-semibold underline text-xl mt-6 block">Read more →</a>
     </div>
 );
 
@@ -62,7 +62,7 @@ const Section11 = () => {
             {/* MD — 2 cards visible, 5 dots */}
             <div className="hidden  md:block lg:hidden max-w-4xl mx-auto px-5">
                 <h2 className="text-5xl px-10 font-bold leading-tight mb-10">
-                    What's been happening <br/>and latest research
+                    What's been happening <br />and latest research
                 </h2>
                 <div className="overflow-hidden mb-6 ">
                     <div className="flex gap-4 transition-transform duration-300 ease-in-out"
@@ -77,26 +77,41 @@ const Section11 = () => {
                 <Dots total={5} active={activeMd} setActive={setActiveMd} />
             </div>
 
-            {/* LG — 3 cards visible, 2 dots */}
-            <div className="hidden lg:block max-w-6xl mx-auto px-6 py-6">
-                <h2 className="text-5xl xl:text-6xl font-bold ml-10 leading-tight mb-10">
-                    What's been happening <br/> and latest research
+            {/* LG — 3 cards visible with peek effect */}
+            <div className="hidden lg:block min-w-9xl mx-auto px-15 py-6">
+                <h2 className="text-5xl xl:text-6xl font-bold tracking-[-2px]  leading-tight mb-10">
+                    What's been happening <br /> and latest research
                 </h2>
-                <div className="overflow-hidden mb-6">
+                {/* <div className="overflow-hidden mb-6">
                     <div className="flex gap-4 transition-transform duration-300 ease-in-out"
-                        style={{ transform: `translateX(calc(${activeLg} * -101%))` }}>
-                        {/* Group 1: cards 0,1,2 */}
-                        <div className="flex gap-4 flex-shrink-0 w-full">
+                        style={{ transform: `translateX(calc(${activeLg} * -95%))` }}>
+                        <div className="flex gap-4 flex-shrink-0" style={{ width: "95%" }}>
                             {cards.slice(0, 3).map((card, i) => (
-                                <div key={i} className="flex-1"><CardItem card={card} /></div>
+                                <div key={i} className="flex-shrink-0" style={{ width: "32%" }}><CardItem card={card} /></div>
                             ))}
                         </div>
-                        {/* Group 2: cards 2,3,4 */}
-                        <div className="flex gap-4 flex-shrink-0 w-full">
+                        
+                        <div className="flex gap-4 flex-shrink-0" style={{ width: "95%" }}>
                             {cards.slice(2, 5).map((card, i) => (
-                                <div key={i} className="flex-1"><CardItem card={card} /></div>
+                                <div key={i} className="flex-shrink-0" style={{ width: "30%" }}><CardItem card={card} /></div>
                             ))}
                         </div>
+                    </div>
+                </div> */}
+                <div className="overflow-hidden mb-6">
+                    <div
+                        className="flex gap-6 transition-transform duration-300 ease-in-out"
+                        style={{ transform: `translateX(calc(${activeLg} * -100%))` }}
+                    >
+                        {[0, 1].map((page) => (
+                            <div key={page} className="flex gap-6 flex-shrink-0 w-full">
+                                {cards.slice(page * 3, page * 3 + 3).map((card, i) => (
+                                    <div key={i} className="flex-1">
+                                        <CardItem card={card} />
+                                    </div>
+                                ))}
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <Dots total={2} active={activeLg} setActive={setActiveLg} />

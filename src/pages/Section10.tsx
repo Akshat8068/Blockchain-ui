@@ -53,23 +53,27 @@ const Section10 = () => {
             </div>
 
             {/* MD — heading top, horizontal line, marquee below */}
-            <div className="hidden md:block px-5 lg:hidden max-w-4xl mx-auto">
-                <h2 className="text-5xl font-bold px-14 text-start leading-tight mb-8">
+            <div className="hidden md:block px-5 lg:max-w-9xl  mx-auto">
+                <h2 className="text-5xl font-bold px-10  text-start leading-tight mb-8">
                     Trusted<br />by leading investors
                 </h2>
-                <div className=" pt-8">
+                <div className="relative pt-8 px-10">
+                    <div className="pointer-events-none absolute inset-y-0 left-10 w-16 z-10 bg-gradient-to-r from-white to-transparent" />
+                    <div className="pointer-events-none absolute inset-y-0 right-10 w-16 z-10 bg-gradient-to-l from-white to-transparent" />
                     <Marquee />
                 </div>
             </div>
 
-            {/* LG — heading left, marquee right */}
-            <div className="hidden lg:flex items-center gap-10 max-w-7xl mx-auto">
+            {/* XL — heading left, marquee right */}
+            <div className="hidden xl:block xl:flex items-center gap-10 max-w-7xl mx-auto">
                 <div className="w-1/3 flex-shrink-0 px-10">
                     <h2 className="text-5xl xl:text-6xl px-5 font-bold leading-tight">
                         Trusted<br />by leading<br />investors
                     </h2>
                 </div>
-                <div className="flex-1 overflow-hidden">
+                <div className="relative flex-1 overflow-hidden">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 w-16 z-10 bg-gradient-to-r from-white to-transparent" />
+                    <div className="pointer-events-none absolute inset-y-0 right-0 w-16 z-10 bg-gradient-to-l from-white to-transparent" />
                     <Marquee />
                 </div>
             </div>

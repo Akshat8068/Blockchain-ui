@@ -10,13 +10,13 @@ const Section13 = () => {
             <div className="max-w-2xl  rounded-xl p-10 mx-auto text-center bg-[#FEF8F6] md:max-w-xl lg:max-w-2xl">
 
                 {/* Heading */}
-                <h2 className="text-5xl font-medium leading-tight mb-8 lg:mb-2">
+                <h2 className="text-5xl font-medium tracking-[-2px] mb-5 lg:mb-2">
                     Invest like an icon
                 </h2>
 
                 {/* Available on + rating */}
-                <div className="flex items-center justify-center gap-2 mb-2 lg:mb-0">
-                    <span className=" text-2xl font-semibold">Available on</span>
+                <div className="flex items-center justify-center  mb-2 lg:mb-0">
+                    <span className=" text-[20px] font-semibold">Available on</span>
                     <img src={appleLogo} alt="Apple" className="w-10 h-10 object-contain" />
                     <img src={playstoreLogo} alt="Google Play" className="w-10 h-10 object-contain" />
                 </div>
@@ -28,13 +28,13 @@ const Section13 = () => {
                 {/* Buttons */}
                 <div className="flex items-center justify-center  gap-4">
                     <button
-                        className="bg-black text-white font-semibold px-8 py-3 rounded-xl hover:bg-gray-800 transition-colors text-base whitespace-nowrap"
+                        className="bg-black text-white font-semibold px-3 py-4 rounded-xl hover:bg-gray-800 transition-colors text-base whitespace-nowrap"
                     >
                         Get started
                     </button>
                     <button
 
-                        className="border border-black text-black font-semibold px-8 py-3 rounded-xl hover:bg-black hover:text-white transition-colors text-base whitespace-nowrap"
+                        className="border border-black text-black font-semibold px-3 py-4 rounded-xl hover:bg-black hover:text-white transition-colors text-base whitespace-nowrap"
                     >
                         Download app
                     </button>

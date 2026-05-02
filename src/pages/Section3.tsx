@@ -19,7 +19,7 @@ const Section3 = () => {
 
     return (
         <motion.section
-            className="bg-white text-black min-h-screen  flex flex-col justify-center py-24 px-14 -mt-4 relative z-10 pb-0"
+            className="bg-white text-black min-h-screen  flex flex-col  justify-center py-24 px-14 lg:px-20 -mt-4 relative z-10 pb-0"
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
@@ -51,7 +51,7 @@ const Section3 = () => {
             </div>
 
             {/* LG — 2x2 grid */}
-            <div className="hidden lg:block xl:hidden max-w-6xl  mx-auto w-full">
+            <div className="hidden lg:block  xl:hidden max-w-6xl  mx-auto w-full">
                 <div>
                     <h2 className="text-[56px] font-semibold tracking-[-3px] ">
                         Be Your Own Bank®
@@ -60,10 +60,10 @@ const Section3 = () => {
                         Trading platform and DeFi Wallet, all in one application
                     </p>
                 </div>
-                <div className="grid grid-cols-2 gap-6 space-x-40">
+                <div className="grid grid-cols-2 gap-8 space-x-40">
                     {cards.map((card) => (
                         <div key={card.id} className="flex w-4/5   gap-1  flex-col gap-3">
-                            <div className="relative  w-[500px] h-[450px] rounded-2xl overflow-hidden">
+                            <div className="relative  w-[480px] h-[450px] rounded-2xl overflow-hidden">
                                 <img src={card.bg} alt="" className="absolute w-full inset-0 h-full w-full object-cover" />
                                 {card.content && (
                                     <div className="absolute inset-0 flex items-center p-14 justify-center p-5">

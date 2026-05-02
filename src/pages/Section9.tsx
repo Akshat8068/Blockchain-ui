@@ -8,7 +8,7 @@ const stats = [
 
 const Section9 = () => {
     return (
-        <motion.section className="bg-white text-black py-16 px-5 "
+        <motion.section className=" text-black py-14  px-5 "
             initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.7, ease: "easeOut" }}>
 
@@ -26,40 +26,40 @@ const Section9 = () => {
             </div>
 
             {/* MD — 3 col, col1 top, col2 center, col3 bottom */}
-            <div className="hidden md:grid lg:hidden grid-cols-3 max-w-3xl mx-auto my-20 h-80">
+            <div className="hidden md:grid lg:hidden px-10 grid-cols-3 max-w-3xl mx-auto my-20 h-80">
                 {/* Col 1 — top */}
-                <div className="flex flex-col justify-start text-center pt-4 border-r  px-6">
-                    <p className="text-6xl font-bold leading-none mb-2">{stats[0].value}</p>
+                <div className="flex flex-col justify-start text-center pt-4 border-r border-gray-400  px-6">
+                    <p className="text-[52px] font-bold leading-none mb-2">{stats[0].value}</p>
                     <p className="text-base ">{stats[0].label}</p>
                 </div>
                 {/* Col 2 — center */}
-                <div className="flex flex-col justify-center border-r  text-center">
-                    <p className="text-6xl font-bold leading-none mb-2">{stats[1].value}</p>
+                <div className="flex flex-col justify-center border-r border-gray-400  text-center">
+                    <p className="text-[52px] font-bold leading-none mb-2">{stats[1].value}</p>
                     <p className="text-base ">{stats[1].label}</p>
                 </div>
                 {/* Col 3 — bottom */}
                 <div className="flex flex-col justify-end pb-4 px-6 text-center">
-                    <p className="text-6xl font-bold leading-none mb-2">{stats[2].value}</p>
+                    <p className="text-[52px] font-bold leading-none mb-2">{stats[2].value}</p>
                     <p className="text-base ">{stats[2].label}</p>
                 </div>
             </div>
 
             {/* LG — same layout, bigger text */}
-            <div className="hidden lg:grid grid-cols-3 max-w-5xl mx-auto h-screen">
+            <div className="hidden lg:grid px-18 py-20 grid-cols-3 max-w-5xl mx-auto h-screen">
                 {/* Col 1 — top */}
-                <div className="flex flex-col justify-start pt-6 border-r  px-2">
-                    <p className="text-8xl font-bold leading-none mb-3">{stats[0].value}</p>
-                    <p className="text-3xl text-center font-semibold">{stats[0].label}</p>
+                <div className="flex flex-col justify-start pt-6 border-r border-gray-300 text-center px-8">
+                    <p className="text-[58px] tracking-[-3px] font-bold leading-none mb-3">{stats[0].value}</p>
+                    <p className="text-lg">{stats[0].label}</p>
                 </div>
                 {/* Col 2 — center */}
-                <div className="flex flex-col justify-center border-r  px-8">
-                    <p className="text-8xl font-bold leading-none mb-3">{stats[1].value}</p>
-                    <p className="text-3xl text-center font-semibold">{stats[1].label}</p>
+                <div className="flex flex-col  justify-center border-r border-gray-300 px-8 text-center">
+                    <p className="text-[58px] font-bold leading-none mb-3">{stats[1].value}</p>
+                    <p className="text-lg">{stats[1].label}</p>
                 </div>
                 {/* Col 3 — bottom */}
-                <div className="flex flex-col justify-end pb-6 px-8">
-                    <p className="text-8xl font-bold leading-none mb-3">{stats[2].value}</p>
-                    <p className="text-3xl text-center font-semibold">{stats[2].label}</p>
+                <div className="flex flex-col justify-end pb-6 px-8 text-center">
+                    <p className="text-[58px] font-bold leading-none mb-3">{stats[2].value}</p>
+                    <p className="text-lg">{stats[2].label}</p>
                 </div>
             </div>
 

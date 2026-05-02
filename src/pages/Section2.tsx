@@ -24,10 +24,13 @@ const Section2 = () => {
 
     return (
         // overlap hero section 
+        <> 
+            <div className="h-25 w-full" style={{background: "linear-gradient(0deg, #ffffffff 0%, #807f7fff 45%, #464646ff 75%, #0d0d0dff 100%" }}
+/>
         <section
-            className="relative z-30 mx-4 md:mx-12 lg:mx-18 rounded-2xl overflow-hidden text-white -mt-32"
+            className="relative z-30 mx-4 md:mx-12 lg:mx-18 rounded-2xl overflow-hidden text-white -mt-70 md:-mt-70 lg:-mt-50"
             style={{
-                background: "linear-gradient(180deg, #2e2e2e 0%, #5a5a5a 45%, #c0c0c0 75%, #ffffff 100%)" }}
+                background: "linear-gradient(0deg, #0B0B0B 0%, #3a3a3aff 45%, #6d6d6dff 75%, #2a2a2aff 100%, #0b0b0bff 0%)" }}
             
         >
             <div className="max-w-6xl mx-5 lg:px-0 py-5">
@@ -71,9 +74,9 @@ const Section2 = () => {
                             <button
                                 key={c.id}
                                 onClick={() => setSelected(c.id)}
-                                className={`flex items-center gap-3 px-5 py-4 rounded-2xl transition-all text-left col-span-2 ${extraClass} ${selected === c.id
-                                        ? "bg-zinc-700/80 shadow-md"
-                                        : "hover:bg-zinc-700/40"
+                                className={`flex items-center gap-3 p-3 rounded-2xl transition-all text-left col-span-2 ${extraClass} ${selected === c.id
+                                    ? "bg-[#2e2d2d] shadow-md"
+                                    : "hover:bg-black/9"
                                     }`}
                             >
                                 <img src={c.logo} className="w-10 h-10 rounded-full" />
@@ -176,7 +179,8 @@ const Section2 = () => {
                 </div>
 
             </div>
-        </section >
+            </section >
+        </>
     );
 };
 

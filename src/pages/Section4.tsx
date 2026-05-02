@@ -82,7 +82,7 @@ const Section4 = () => {
             </div>
 
             {/* Marquee rows */}
-            <div className="relative flex flex-col max-w-6xl mx-auto px-2 md:px-5 lg:px-8 gap-6">
+            <div className="relative flex flex-col max-w-6xl mx-auto px-2 md:px-5 lg:px-12 gap-6">
                 {/* Left fade */}
                 <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-white to-transparent" />
                 {/* Right fade */}

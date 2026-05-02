@@ -105,22 +105,22 @@ const ExplorerCard = () => {
 
 const Section7 = () => {
     return (
-        <motion.section className="bg-white text-black py-20 px-5"
+        <motion.section className=" text-black py-15 mb-2 md:py-24 px-5"
             initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.7, ease: "easeOut" }}>
 
             {/* MOBILE + MD — centered text only */}
-            <div className="lg:hidden max-w-3xl py-10 mx-auto text-center">
-                <p className="text-3xl  px-40 leading-snug">
-                    Way back when, we pioneered the world's{" "}
-                    <span className="text-[#e8174a]">first blockchain explorer</span>
+            <div className="max-w-3xl  mx-auto text-center md:px-44 lg:px-40 xl:hidden">
+                <p className="text-[26px]   ">
+                    Way back when, we pioneered the world's 
+                    <span className="text-[#e8174a]"> first blockchain explorer</span>
                     <br />
-                    Now, use it to begin your own crypto journey
+                    Now, use it to begin <br/> your own crypto journey
                 </p>
             </div>
 
             {/* LG — text + Explorer card */}
-            <div className="hidden lg:block max-w-4xl mx-auto">
+            {/* <div className="hidden xl:block max-w-4xl mx-auto">
                 <div className="text-center mb-2">
                     <p className="text-4xl xl:text-5xl leading-snug">
                         Way back when, we pioneered the world's{" "}
@@ -130,7 +130,7 @@ const Section7 = () => {
                     </p>
                 </div>
                 <ExplorerCard />
-            </div>
+            </div> */}
 
         </motion.section>
     );
