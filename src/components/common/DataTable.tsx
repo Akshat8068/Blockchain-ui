@@ -1,16 +1,16 @@
 import React, { useState, useMemo } from 'react';
 import {
-  ColumnDef,
+  type ColumnDef,
   flexRender,
   getCoreRowModel,
   getSortedRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   useReactTable,
-  SortingState,
-  ColumnFiltersState,
-  VisibilityState,
-  RowSelectionState,
+  type SortingState,
+  type ColumnFiltersState,
+  type VisibilityState,
+  type RowSelectionState,
 } from '@tanstack/react-table';
 import {
   ChevronDown,
@@ -359,12 +359,12 @@ export function DataTable<TData>({
               </SelectContent>
             </Select>
           </div>
-          
+
           <div className="flex w-[100px] items-center justify-center text-sm font-medium">
             Page {table.getState().pagination.pageIndex + 1} of{" "}
             {table.getPageCount()}
           </div>
-          
+
           <div className="flex items-center space-x-2">
             <Button
               variant="outline"

@@ -10,7 +10,7 @@ const cards = [
 ];
 
 const CardItem = ({ card }: { card: typeof cards[0] }) => (
-    <div className="bg-[#F6F1EF] rounded-2xl px-6 py-8 flex flex-col justify-between" style={{ minHeight: "320px" }}>
+    <div className="bg-[#F6F1EF] rounded-2xl px-6 py-8 flex flex-col justify-between min-h-[320px] w-[350px]" >
         <div>
             <p className="text-gray-800 text-base mb-3">{card.date}</p>
             <h3 className="text-2xl font-semibold mb-3">{card.title}</h3>
@@ -37,7 +37,7 @@ const Section11 = () => {
     const [activeLg, setActiveLg] = useState(0);
 
     return (
-        <motion.section className="bg-white text-black py-14 px-5"
+        <motion.section className="bg-white text-black py-14 px-5 overflow-hidden"
             initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.7, ease: "easeOut" }}>
 
@@ -59,65 +59,81 @@ const Section11 = () => {
                 <Dots total={5} active={activeMobile} setActive={setActiveMobile} />
             </div>
 
-            {/* MD — 2 cards visible, 5 dots */}
-            <div className="hidden  md:block lg:hidden max-w-4xl mx-auto px-5">
-                <h2 className="text-5xl px-10 font-bold leading-tight mb-10">
-                    What's been happening <br />and latest research
-                </h2>
-                <div className="overflow-hidden mb-6 ">
-                    <div className="flex gap-4 transition-transform duration-300 ease-in-out"
-                        style={{ transform: `translateX(calc(${activeMd} * -51%))` }}>
+            {/* MD — dot 0: 2 cards full + left space more, right less | dot 1-3: prev peek left + 2 cards | dot 4: last 2 cards + right space more */}
+            <div className="hidden md:block lg:hidden">
+                <div className="px-8 mb-10">
+                    <h2 className="text-5xl font-bold leading-tight">
+                        What's been happening <br />and latest research
+                    </h2>
+                </div>
+                {/*
+                  Each card = calc(50% - 20px) of container (2 cards + gap fit in view)
+                  Container width ~768px, px-8 = 32px each side → inner = 704px
+                  card ≈ 332px, gap = 16px, step = 348px
+                  dot 0: translateX(0) → cards start flush left with px-8 padding
+                  dot i (1-4): translateX(calc(-i * 348px + 40px)) → 40px peek of prev card on left
+                */}
+                <div className="overflow-hidden px-8" style={{ width: "100%" }}>
+                    <div
+                        className="flex gap-4 transition-transform duration-300 ease-in-out"
+                        style={{
+                            transform: activeMd === 0
+                                ? `translateX(0px)`
+                                : `translateX(calc(${activeMd} * (calc(-50vw + 32px)) + 40px))`
+                        }}
+                    >
                         {cards.map((card, i) => (
-                            <div key={i} className="flex-shrink-0" style={{ width: "48%" }}>
+                            <div key={i} className="flex-shrink-0" style={{ width: "calc(50vw - 40px)" }}>
                                 <CardItem card={card} />
                             </div>
                         ))}
                     </div>
                 </div>
-                <Dots total={5} active={activeMd} setActive={setActiveMd} />
+                <div className="mt-6">
+                    <Dots total={5} active={activeMd} setActive={setActiveMd} />
+                </div>
             </div>
 
             {/* LG — 3 cards visible with peek effect */}
-            <div className="hidden lg:block min-w-9xl mx-auto px-15 py-6">
-                <h2 className="text-5xl xl:text-6xl font-bold tracking-[-2px]  leading-tight mb-10">
+            <div className="hidden lg:block py-6">
+                <h2 className="text-5xl xl:text-6xl font-bold tracking-[-2px] leading-tight mb-10 px-15">
                     What's been happening <br /> and latest research
                 </h2>
-                {/* <div className="overflow-hidden mb-6">
-                    <div className="flex gap-4 transition-transform duration-300 ease-in-out"
-                        style={{ transform: `translateX(calc(${activeLg} * -95%))` }}>
-                        <div className="flex gap-4 flex-shrink-0" style={{ width: "95%" }}>
-                            {cards.slice(0, 3).map((card, i) => (
-                                <div key={i} className="flex-shrink-0" style={{ width: "32%" }}><CardItem card={card} /></div>
-                            ))}
-                        </div>
-                        
-                        <div className="flex gap-4 flex-shrink-0" style={{ width: "95%" }}>
-                            {cards.slice(2, 5).map((card, i) => (
-                                <div key={i} className="flex-shrink-0" style={{ width: "30%" }}><CardItem card={card} /></div>
-                            ))}
-                        </div>
-                    </div>
-                </div> */}
+                {/* 
+                  LG: card width = calc(33.333vw - 32px), gap = 16px, step = calc(33.333vw - 16px)
+                  dot 0: translateX(px-15 = 60px) → cards 1,2 full + card 3 peek at right edge
+                  dot 1: translateX(calc(60px + halfCard - step)) → card 2 half peek left + cards 3,4 full + card 5 peek right
+                  dot 2: translateX(calc(60px - 2*step)) → card 3 peek left (no space) + cards 4,5 full + right space
+                  
+                  halfCard = calc(16.666vw - 16px)
+                  step = calc(33.333vw - 16px)
+                  
+                  dot 0: translateX(0)  with paddingLeft on container
+                  dot 1: translateX(calc(-1 * (33.333vw - 16px) + 16.666vw - 16px)) = translateX(calc(-16.666vw))
+                  dot 2: translateX(calc(-2 * (33.333vw - 16px))) = translateX(calc(-66.666vw + 32px))
+                */}
                 <div className="overflow-hidden mb-6">
                     <div
-                        className="flex gap-6 transition-transform duration-300 ease-in-out"
-                        style={{ transform: `translateX(calc(${activeLg} * -100%))` }}
+                        className="flex gap-4 transition-transform duration-300 ease-in-out"
+                        style={{
+                            transform: activeLg === 0
+                                ? `translateX(0px)`
+                                : activeLg === 1
+                                    ? `translateX(calc(-1 * (100vw / 3 + 5px)))`
+                                    : `translateX(calc(-2 * (100vw / 3 + 5px) + 60px))`
+                        }}
                     >
-                        {[0, 1].map((page) => (
-                            <div key={page} className="flex gap-6 flex-shrink-0 w-full">
-                                {cards.slice(page * 3, page * 3 + 3).map((card, i) => (
-                                    <div key={i} className="flex-1">
-                                        <CardItem card={card} />
-                                    </div>
-                                ))}
+                        {cards.map((card, i) => (
+                            <div key={i} className="flex-shrink-0" style={{ width: "calc(100vw / 3 - 11px)" }}>
+                                <CardItem card={card} />
                             </div>
                         ))}
                     </div>
                 </div>
-                <Dots total={2} active={activeLg} setActive={setActiveLg} />
+                <Dots total={3} active={activeLg} setActive={setActiveLg} />
             </div>
 
-        </motion.section>
+        </motion.section >
     );
 };
 

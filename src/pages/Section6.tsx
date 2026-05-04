@@ -5,6 +5,7 @@ import card3Bg from "../assets/cards2/card-3-v2.png";
 import card2Logo from "../assets/cards2/card-2-icon.png";
 import card3Logo from "../assets/cards2/favicon.ico";
 
+
 const cards = [
     {
         bg: card1Bg,
@@ -25,7 +26,6 @@ const cards = [
         desc: "We've handled over $1.2T+ worth of transactions",
     },
 ];
-
 const Section6 = () => {
     return (
         <motion.section className="bg-white text-black py-14 px-5"
@@ -40,18 +40,37 @@ const Section6 = () => {
                     <span className="text-7xl font-extrabold">2011</span>
                 </h2>
                 <div className="flex flex-col gap-5">
-                    {cards.map((card, i) => (
-                        <div key={i} className="relative w-full h-80 rounded-2xl overflow-hidden p-6">
-                            <img src={card.bg} alt="" className="absolute inset-0 w-full h-full object-cover" />
-                            <div className="relative text-white z-10 flex flex-col justify-between h-full">
-                                <img src={card.logo} alt="" className="w-10 h-10 object-contain" />
-                                <div>
-                                    <p className="font-semibold text-4xl mb-1">{card.title}</p>
-                                    <p className="text-2xl opacity-80">{card.desc}</p>
-                                </div>
+                    
+                    <div  className="relative w-full h-80 rounded-2xl overflow-hidden p-6">
+                        <img src={card1Bg} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                        <div className="relative text-black z-10 flex flex-col justify-between h-full">
+                            <img src={card3Logo} alt="" className="w-10 h-10 object-contain" />
+                            <div>
+                                <p className="font-semibold text-4xl mb-1">Security first</p>
+                                <p className="text-[22px] opacity-80">We've never lost customer funds</p>
                             </div>
                         </div>
-                    ))}
+                    </div>
+                    <div  className="relative w-full h-80 rounded-2xl overflow-hidden p-6">
+                        <img src={card2Bg} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                        <div className="relative text-white z-10 flex flex-col justify-between h-full">
+                            <img src={card2Logo} alt="" className="w-10 h-10 object-contain" />
+                            <div>
+                                <p className="font-semibold text-4xl mb-1">Used by millions</p>
+                                <p className="text-[22px] opacity-80">Over 94M+ wallets have been created to date and growing</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div  className="relative w-full h-80 rounded-2xl overflow-hidden p-6">
+                        <img src={card3Bg} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                        <div className="relative text-white z-10 flex flex-col justify-between h-full">
+                            <img src={card3Logo} alt="" className="w-10 h-10 object-contain" />
+                            <div>
+                                <p className="font-semibold text-4xl mb-1">Digital asset hub</p>
+                                <p className="text-[22px] opacity-80">We've handled over $1.2T+ worth of transactions</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -1,4 +1,5 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React, { Component } from 'react';
+import type { ErrorInfo, ReactNode } from 'react';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -93,7 +94,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 An unexpected error occurred. We apologize for the inconvenience.
               </CardDescription>
             </CardHeader>
-            
+
             <CardContent>
               {import.meta.env.DEV && this.state.error && (
                 <details className="mt-4 rounded-md bg-muted p-4">
@@ -124,7 +125,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 </details>
               )}
             </CardContent>
-            
+
             <CardFooter className="flex flex-col gap-2">
               <Button onClick={this.handleRetry} className="w-full">
                 <RefreshCw className="mr-2 h-4 w-4" />

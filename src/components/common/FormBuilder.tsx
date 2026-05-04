@@ -1,11 +1,12 @@
 import React from 'react';
-import { useForm, Controller, FieldValues, Path, DefaultValues } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
+import type { FieldValues, Path, DefaultValues } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { 
-  Eye, 
-  EyeOff, 
-  Calendar, 
+import {
+  Eye,
+  EyeOff,
+  Calendar,
   Upload,
   Check,
   X
@@ -21,18 +22,18 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { FileUpload } from '@/components/common/FileUpload';
 import { cn } from '@/utils';
 
-export type FieldType = 
-  | 'text' 
-  | 'email' 
-  | 'password' 
-  | 'number' 
-  | 'textarea' 
-  | 'select' 
+export type FieldType =
+  | 'text'
+  | 'email'
+  | 'password'
+  | 'number'
+  | 'textarea'
+  | 'select'
   | 'multiselect'
-  | 'checkbox' 
-  | 'switch' 
-  | 'radio' 
-  | 'date' 
+  | 'checkbox'
+  | 'switch'
+  | 'radio'
+  | 'date'
   | 'file'
   | 'custom';
 
@@ -296,7 +297,7 @@ export function FormBuilder<T extends FieldValues>({
     reset,
   } = useForm<T>({
     defaultValues,
-    resolver: validation ? zodResolver(validation) : undefined,
+    resolver: validation ? zodResolver(validation as any) : undefined,
   });
 
   const watchedValues = watch();
@@ -335,7 +336,7 @@ export function FormBuilder<T extends FieldValues>({
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit as any)}
       className={cn('space-y-6', className)}
     >
       <div

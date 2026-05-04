@@ -13,8 +13,8 @@ const institutionalLinks = [
 
 const Home = () => {
     return (
-        <main className="bg-black text-white py-22 md:py-28 md:mb-0 lg:pt-18 lg:pb-0 relative">
-            <div className="max-w-7xl md:hidden mx-auto px-4.5 md:px-10 lg:px-24 ">
+        <main className="bg-black text-white py-21 md:py-22 md:mb-0 lg:pt-16 lg:pb-0 relative">
+            <div className="max-w-7xl md:hidden mx-auto px-[14px] md:px-10 lg:px-10 ">
                 <section className="pb-0">
 
                     {/* Heading */}
@@ -76,7 +76,7 @@ const Home = () => {
 
                 </section>
             </div>
-            <div className="hidden md:block max-w-7xl mx-auto px-4.5 md:px-10 lg:px-24 ">
+            <div className="hidden md:block max-w-7xl mx-auto px-4.5 md:px-22 lg:px-24 ">
                 <section className="pb-0">
 
                     {/* Heading */}
@@ -95,7 +95,7 @@ const Home = () => {
                     <div className="hidden  md:flex items-start lg:gap-24 mt-10 mb-0">
                         {/* Personal — 2 columns */}
                         <div>
-                            <h3 className="font-bold text-3xl mb-4">Personal</h3>
+                            <h3 className="font-bold text-[26px] mb-4">Personal</h3>
                             <div className="flex gap-10">
                                 <ul className="flex flex-col gap-2">
                                     {personalLinks1.map((l) => (

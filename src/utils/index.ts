@@ -13,7 +13,7 @@ export function debounce<T extends (...args: any[]) => void>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout;
+  let timeout: ReturnType<typeof setTimeout>;
   return (...args: Parameters<T>) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => func(...args), wait);
@@ -94,10 +94,10 @@ export function parseJWT(token: string): any {
   try {
     const parts = token.split('.');
     if (parts.length !== 3) return null;
-    
+
     const base64Url = parts[1];
     if (!base64Url) return null;
-    
+
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload = decodeURIComponent(
       atob(base64)
